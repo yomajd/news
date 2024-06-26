@@ -1,0 +1,56 @@
+<span class="p-2">
+    <a (click)="goBack()" class="link-primary"><i class="fa-solid fa-chevron-left"> Retour</i></a>
+</span>
+<hr />
+<h5 class="p-2">Détails de l'actualité :</h5>
+<div class="row">
+  <div class="col-md-5">
+    <div class="p-3">
+      <h3 class="px-4">Créé par {{ getFullName() | titlecase }}</h3>
+      <br />
+      <h5>Titre</h5>
+      <h3 class="px-4">{{ news?.title }}</h3>
+      <br />
+      <h5>Profiles</h5>
+      <ul>
+        <li *ngFor="let profil of news?.profils">{{ profil }}</li>
+      </ul>
+      <br />
+      <div class="row">
+        <div class="col">
+          <img [src]="pictureUrl" class="actuImg img-fluid rounded mh-40"  alt="coucou"/>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="d-flex justify-content-center align-items-center" style="height:20px">
+              <span class="icon-span">
+                <i class="fa-regular fa-file mt-4"></i>
+              </span>
+            </div>
+            <div class="card-body">
+              <div *ngIf="fileLinks">
+                Pieces jointes
+                <ul class="list-unstyled">
+                  <li *ngFor="let fileLink of fileLinks" class="d-flex align-items-center">
+                    <a [href]="fileLink.url" class="link-secondary text-truncate small"> {{ fileLink.name }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="container pt-5">
+      <h5>Date d'expiration</h5>
+      <p class="lead px-4">{{ news?.expirationDate | date: 'dd/MM/yyyy'}}</p>
+    </div>
+    <div class="container pt-5">
+      <h5>Description :</h5>
+      <div [innerHTML]="news?.description"></div>
+      <p *ngIf="!news?.description" class="lead px-4">Pas de description disponible</p>
+    </div>
+  </div>
+</div>

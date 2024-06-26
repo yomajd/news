@@ -1,0 +1,9 @@
+.results {
+    display: grid;
+    column-gap: 14px;
+    row-gap: 14px;
+    grid-template-columns: repeat(7, 1fr); /* Fixed to 7 columns */
+    justify-content: center;
+    padding: 10px;
+    max-width: 100%;
+}

@@ -1,0 +1,37 @@
+### Server App ###
+
+ServerApp/.git
+
+ServerApp/.idea/
+
+ServerApp/.vs/
+
+ServerApp/bin/
+
+ServerApp/obj/
+
+ServerApp/wwwroot/*
+
+ServerApp/!wwwroot/images/
+
+ServerApp/wwwroot/images/*
+
+ServerApp/!wwwroot/images/default.jpg
+
+ServerApp/Uploads/*
+
+ServerApp/*.user
+
+ServerApp/obj
+
+### Cleint App ###
+
+ClientApp/.angular
+
+ClientApp/.vscode
+
+ClientApp/dist
+
+ClientApp/node_modules
+
+

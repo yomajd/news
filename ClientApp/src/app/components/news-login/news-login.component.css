@@ -1,0 +1,13 @@
+body {
+    background-color: #999a9c;
+  }
+  
+  .card {
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 10px;
+  }

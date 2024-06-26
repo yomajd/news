@@ -1,0 +1,84 @@
+<span class="p-2">
+    <a (click)="goBack()" class="link-primary"><i class="fa-solid fa-chevron-left"> Retour</i></a>
+</span>
+<hr />
+<h5 class="p-2">Ajouter une actualité : </h5>
+<form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group p-3">
+                <label for="title">Titre</label>
+                <input id="title" formControlName="title" class="form-control" type="text" />
+                <div *ngIf="newsForm.get('title')?.invalid && newsForm.get('title')?.touched" class="text-danger">
+                    Le titre est requis
+                </div>
+                <br />
+                <label for="profils">Profiles</label>
+                <select id="profils" formControlName="profils" class="form-control" multiple>
+                    <option *ngFor="let profil of profilsOptions" [value]="profil">{{ profil }}</option>
+                </select>
+                <div *ngIf="newsForm.get('profils')?.invalid && newsForm.get('profils')?.touched" class="text-danger">
+                    Veuillez choisir au moins un profile
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" (mouseover)="showUpload = true" (mouseleave)="showUpload = false">
+                    <a class="btn btn-outline-primary" *ngIf="showUpload" (click)="picInput.click()">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    </a>
+                    <img [src]="newsForm.get('picture')?.value" alt="News Picture"
+                        class="actuImg img-fluid rounded mh-40" />
+                    <input type="file" accept="image/*" (change)="onImgSelected($event)"
+                        style="display: none;" #picInput/>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card shadow-sm">
+                      <div class="d-flex justify-content-center align-items-center" style="height:20px">
+                        <span class="icon-span">
+                          <i class="fa-regular fa-file mt-2"></i>
+                        </span>
+                      </div>
+                      <div class="card-body">
+                        <p class="text-center small mb-0">Ajouter des pieces jointes</p>
+                        <ul class="list-unstyled">
+                          <li *ngFor="let file of attachments" class="d-flex align-items-center ">
+                            <a (click)="removeFile(file)" class="me-2"><i class="fa-solid fa-trash"></i></a>
+                            <small class="truncate-text">{{ file.name }}</small>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="mx-auto p-1">
+                        <a class="link-primary" (click)="attachmentsInput.click()"> 
+                          <i class="fa-solid fa-arrow-up-from-bracket link-primary"></i>
+                        </a>
+                        <input id="pjs" type="file" (change)="onFilesSelected($event)" class="form-control-file"
+                          style="display:none" multiple #attachmentsInput/>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <br />
+            <label for="expirationDate">Date d'expiration</label>
+            <input id="expirationDate" formControlName="expirationDate" type="date" class="form-control" />
+            <div *ngIf="newsForm.get('expirationDate')?.hasError('required') && newsForm.get('expirationDate')?.touched" class="text-danger">
+                Merci de saisir une date valide
+            </div>
+            <div *ngIf="newsForm.get('expirationDate')?.hasError('dateInPast') && newsForm.get('expirationDate')?.touched" class="text-danger">
+                Merci de saisir une date d'expiration postérieure à la date du jour 
+              </div>
+        </div>
+
+        <div class="col-md-7 p-3">
+            <div class="form-group container pt-5">
+                <editor formControlName="description" [init]="{ base_url: '/tinymce', suffix: '.min'   }"
+                    style="padding: 1%;"> </editor>
+            </div>
+        </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end p-4">
+        <button class="btn btn-primary rounded-pill" type="submit">Sauvgarder</button>
+        <button class="btn btn-secondary rounded-pill" (click)="resetForm()">Annuler</button>
+    </div>
+</form>

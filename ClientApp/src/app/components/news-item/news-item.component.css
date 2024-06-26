@@ -1,0 +1,31 @@
+  .actuImg{
+    height:200px; 
+    width:100%;
+  }
+  
+.card {
+  width: 260px; 
+  height: 350px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.float-right {
+  float: right;
+}
+
+.news-item-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color from parent */
+}
+
+.news-item-link:hover {
+  text-decoration: none; /* Remove underline on hover as well */
+}
+
+.read-news {
+  color: #888; 
+}
