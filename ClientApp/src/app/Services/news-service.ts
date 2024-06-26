@@ -40,14 +40,6 @@ export class NewsService {
         return this.http.get<News>(`${this.newsUrl}/${id}`);
     }
 
-    createNews(news: News){
-        this.http.post<News>(this.newsUrl, news)
-        .subscribe(data => {
-            news.id = data.id;
-            this.newsList.push(news);
-        });
-    }
-
     updateNews(id: string, formData: FormData) : Observable<HttpResponse<News>>{
         return this.http.put<News>(`${this.newsUrl}/${id}`, formData, { observe: 'response' })
         .pipe(

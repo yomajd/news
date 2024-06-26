@@ -11,10 +11,6 @@ export class FileService{
 
     constructor(private http: HttpClient) {}
 
-    getFileLinks(id: string){
-        return this.http.get<string[] | null>(`${this.filesUrl}/${id}`);
-    }
-
     deleteAttahcment(id: string, fileName: string)
     {
         return this.http.delete<void>(`${this.filesUrl}/${id}/${fileName}`);

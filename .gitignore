@@ -35,3 +35,4 @@ ClientApp/dist
 ClientApp/node_modules
 
 
+ServerApp/appsettings.json

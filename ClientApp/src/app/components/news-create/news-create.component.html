@@ -62,11 +62,14 @@
             <br />
             <label for="expirationDate">Date d'expiration</label>
             <input id="expirationDate" formControlName="expirationDate" type="date" class="form-control" />
-            <div *ngIf="newsForm.get('expirationDate')?.hasError('required') && newsForm.get('expirationDate')?.touched" class="text-danger">
+            <div *ngIf="newsForm.get('expirationDate')?.hasError('required') && newsForm.get('title')?.touched" class="text-danger">
+              Merci de saisir une date
+            </div>
+            <div *ngIf="newsForm.get('expirationDate')?.hasError('dateInvalide') && newsForm.get('expirationDate')?.touched" class="text-danger">
                 Merci de saisir une date valide
             </div>
             <div *ngIf="newsForm.get('expirationDate')?.hasError('dateInPast') && newsForm.get('expirationDate')?.touched" class="text-danger">
-                Merci de saisir une date d'expiration postérieure à la date du jour 
+                Merci de saisir une date d'expiration postérieure à la date du jour
               </div>
         </div>
 

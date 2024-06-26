@@ -35,7 +35,7 @@ public class NewsService(NewsDbContext dbContext) : INewsService
     public IEnumerable<News> GetNews(NewsFilter filter)
     {
         return dbContext.News
-            .Where(n => n.Profils.Contains(filter.Profil))
+            .Where(n => n.Profils.Contains(filter.Profil) && n.ExpirationDate > filter.ExpirationDate)
             .OrderByDescending(n => n.Id)
             .Skip(filter.Skip * filter.Take)
             .Take(filter.Take)

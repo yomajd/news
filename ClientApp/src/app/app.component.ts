@@ -7,8 +7,7 @@ import {RouterModule} from '@angular/router';
   imports: [RouterModule],
   template: `
     <router-outlet></router-outlet>
-  `,
-  styleUrl: './app.component.css'
+  `
 })
 export class AppComponent {
   title = 'Actu';

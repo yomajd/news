@@ -96,10 +96,15 @@ export class NewsCreateComponent {
     if (!control.value) {
       return { required: true };
     }
-    // Check if the expiratiopn date is at least today
+
+    const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;  // YYYY-MM-DD
+    const isValid = dateRegex.test(control.value);
+    if(!isValid){
+      return {dateInvalide: true};
+    }   
+    
     const inputDate = new Date(control.value);
     const today = new Date();
-
     if (inputDate < today) {
       return { dateInPast: true };
     }

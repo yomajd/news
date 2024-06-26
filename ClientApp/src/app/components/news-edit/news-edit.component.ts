@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { NewsService } from '../../Services/news-service';
 import { FileService } from '../../Services/file-service';
@@ -88,6 +88,7 @@ export class NewsEditComponent implements OnInit{
   }
 
   onSubmit(): void {
+    this.newsForm.markAllAsTouched();
     if (this.newsForm.valid) {
       const updatedNews: News = this.newsForm.value;
       const formData = new FormData();

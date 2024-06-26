@@ -164,7 +164,7 @@ namespace ServerApp.Controllers
 
             newsService.UpdateNews(news);
 
-            return Ok(Converter.GetNewsViewModel(news, userMail!));
+            return Ok(Converter.GetNewsViewModel(news, userMail));
 
         }
 
